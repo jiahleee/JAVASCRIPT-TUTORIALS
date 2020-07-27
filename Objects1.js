@@ -70,4 +70,24 @@ const{first_name,last_name}=person;
 const{first_name, last_name, status='single'}=person;
 
 
+//*** concatenate objects (...)***
+const mergeOptions = (options, defaultOptions) => {
+    return {...defaultOptions,...options};
+}
+
+//sample usage
+const options = {
+    tabSize: 4,
+};
+const defaultOptions = {
+    indentation: 'tab',
+    tabSize: 2,
+    language: 'javascript',
+};
+console.log(mergeOptions(options, defaultOptions));
+
+//{indentation: tab, tabSize: 4, language: javascript}
+
+
+
 
