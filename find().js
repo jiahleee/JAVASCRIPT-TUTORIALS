@@ -22,7 +22,7 @@ const verifyUser = (users, id) => {
      )*/
 
     const user=users.find(user=>user.id===id);//users 배열의 모든 user 중 id===2인 user 변수에 넣기
-    user.is_verified===true;//is_verified 상태값 true 로 변환
+    user.is_verified=true;//is_verified 상태값 true 로 변환
     return users;//완료된 회원 배열 반환
 }
 
