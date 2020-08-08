@@ -68,3 +68,13 @@ const booking2 = {
 }
 console.log(getStatus("John", "Blane", booking2));
 
+
+//***Default Value***
+
+const getErrorMessage = statusCode => {
+    const messages={
+        401:"Unauthorized",
+        404:"Not found"
+    }
+    return messages[statusCode]||"Unexpected error has occurred";
+}
