@@ -126,3 +126,153 @@ const array = [...divs]; // Array
 const links = document.querySelectorAll("a");
 const loginLinks = [...links].filter(link => link.textContent === "Login");
 console.log(loginLinks); // Array of 2 links that have "Login" as text
+
+
+/* innerhtml */
+
+//<div id="test">This is a <strong>sample text</strong></div>
+
+const element = document.querySelector("#test");
+console.log(element.textContent); // "This is a sample text"
+console.log(element.innerHTML); // "This is a <strong>sample text</strong>"
+
+
+/* Change text in node */
+
+//<div id="test">This is a <strong>sample text</strong></div>
+
+const element = document.querySelector("#test");
+element.textContent = "This is the new text!";
+
+element.textContent = "<strong>This will NOT be bold</strong>";
+
+element.innerHTML = "<strong>This will be bold</strong>"
+
+//html code를 html로 인식시키려면 innerHTML을 사용해야한다.
+
+//If the string that you're rendering is coming from your users, then you should most likely avoid using .innerHTML
+// as your users will be able to write HTML & JavaScript code inside of your page which may lead to security issues,
+// often called Cross-Site Scripting (XSS).
+
+/* Emptying Elements */
+
+/*
+ <div id="banner">
+    <h1>Hello World</h1>
+    <p>lorem ipsum</p>
+</div>
+*
+* */
+
+const banner = document.querySelector("#banner");
+banner.innerHTML = "";
+
+//This will empty all the content inside the div with id "banner",
+// without removing the banner itself. So it only removes the h1 and p inside.
+
+// 자동화된 welcome message 보낼 때(strong 태그 포함한)
+
+const getFormattedWelcomeMessage = () => {
+    return document.querySelector("#welcome-message").innerHTML;
+}
+
+//   Welcome to your beautiful(bold font) website!
+
+
+// Practice 1
+/*Complete the method such that it welcomes the user by writing: "Hello {name}"
+where the name is between <strong> tags in the div with id "welcome-message".*/
+
+const setFormattedWelcomeMessage = (name) => {
+    document.querySelector("#welcome-message").innerHTML
+        =`Hello <strong>${name}</strong>`;
+}
+
+
+
+//sample usage
+setFormattedWelcomeMessage("John");
+setFormattedWelcomeMessage("Jennifer");
+
+//input 타입 태그는 닫히는 태그(closing tag)가 없기 때문에 .textContent/.innerHTML로 불러올 수 없다.
+//사용자가 input tag 에 입력한 값을 얻고 싶다면 .value 속성을 이용해야 한다.
+//사용자의 정보를 미리 알고 있을 경우, value="" 을 통해 미리 input tag에 적어 놓을 수도 있다.(사용자 편의를 위해)
+
+const emptyUserName = () => {
+    document.querySelector("#name").value="";
+} //empty도 가능
+
+
+
+/*모든 요소마다 class="highlighted" 추가하기*/
+
+const highlightShoppingListItems = () => {
+    document.querySelectorAll("#shopping-list li")
+        .forEach(item => item.classList.add("highlighted"));
+}
+
+//sample usage
+highlightShoppingListItems();
+
+
+/* Change STYLE by using DOM
+ One of the powerful features of the DOM is being able to change the style of an element.
+Any CSS property can be set or changed from JavaScript.
+This lets you create dynamic experiences based on certain conditions or based on events (which we will see in the next chapter).
+* */
+
+//USE CAMELCASE!
+
+/*
+CSS	                 JavaScript
+background-color	backgroundColor
+color	            color
+font-size	        fontSize
+z-index	            zIndex
+*/
+
+//<div id="banner">Welcome!</div>
+
+const banner = document.querySelector("#banner");
+banner.style.backgroundColor = "red";
+
+//Showing or Hiding element
+
+//<div id="banner">Welcome!</div>
+
+const banner = document.querySelector("#banner");
+
+// hide element
+banner.style.display = "none";
+
+//show element by resetting it's display
+banner.style.display = ""; //or "initial"
+
+// eu-citizen 에게만 전송하고픈 message가 있을 때, 특정 메세지 node를 show/hide 하는 방법
+
+/**
+ * @param {Object[]} user
+ * @param {number} user[].id
+ * @param {boolean} user[].is_eu
+ */
+const updateFormEUConsent = user => {
+    const msg = document.querySelector("#eu-consent");
+    if (user.is_eu){
+        msg.style.display = ""; //same as "initial", block/inline등으로 초기화 시키기
+    }else{
+        msg.style.display = "none";
+    }
+}
+
+//sample usage
+updateFormEUConsent({
+    id: 1,
+    is_eu: true
+});
+
+updateFormEUConsent({
+    id: 2,
+    is_eu: false
+});
+
+
