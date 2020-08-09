@@ -1,8 +1,8 @@
-//*** [Browser event, event object, event handler] ***
+//*** [Browser eventbasic, eventbasic object, eventbasic handler] ***
 /*
 * 마우스 클릭, 화면 스크롤 등의 작업에 따라 브라우저는 반응
-* event 기반으로 브라우저 동작하기
-* Keypoints: event listener, addEventListener, event object
+* eventbasic 기반으로 브라우저 동작하기
+* Keypoints: eventbasic listener, addEventListener, eventbasic object
 * 이벤트 등록:addeventListener function
 *
 *
