@@ -71,3 +71,8 @@ function showRainDrops(is_raining){
 //sample usage
 
 willItRain("berlin");
+
+
+
+
+
